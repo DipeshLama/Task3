@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         randomNumberGen(firstBtn,secondBtn)
         var count: Int = 0
-
         var correctAns = 0
         var incorrectAns = 0
 
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 incorrectAns++
             }
             randomNumberGen(firstBtn, secondBtn)
-            autoDisable(count, firstBtn,secondBtn, correctAns,incorrectAns,resultTxtView,incorrectTxtView,resultTxtView,restartBtn)
+            autoDisable(count, firstBtn,secondBtn, correctAns,incorrectAns,correctTxtView,incorrectTxtView,resultTxtView,restartBtn)
         }
 
         secondBtn.setOnClickListener{
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 incorrectAns++
             }
             randomNumberGen(firstBtn, secondBtn)
-            autoDisable(count, firstBtn,secondBtn, correctAns,incorrectAns,correctTxtView,incorrectTxtView,correctTxtView,restartBtn)
+            autoDisable(count, firstBtn,secondBtn, correctAns,incorrectAns,correctTxtView,incorrectTxtView,resultTxtView,restartBtn)
         }
 
         restartBtn.setOnClickListener{
@@ -63,6 +62,7 @@ class MainActivity : AppCompatActivity() {
             secondBtn.isClickable = true
             secondBtn.isClickable=true
             restartBtn.isVisible = false
+            resultTxtView.visibility=View.INVISIBLE
             correctTxtView.visibility = View.INVISIBLE
             incorrectTxtView.visibility = View.INVISIBLE
             correctTxtView.visibility = View.INVISIBLE
@@ -83,17 +83,14 @@ class MainActivity : AppCompatActivity() {
             btnFirst.text=""
             btnSecond.isClickable = false
             btnSecond.text =""
-            if(correctAns<incorrectAns)
-                tvResult.text = "Sorry you lost"
-            else
-                tvResult.text = "Congrats you won"
+            if (correctAns<incorrectAns) tvResult.text = "Sorry you lost"
+            else tvResult.text = "Congrats you won"
             tvCorrect.text = "You correctly guessed $correctAns answers"
             tvIncorrect.text = "You made $incorrectAns mistakes"
             tvCorrect.visibility = View.VISIBLE
             tvIncorrect.visibility = View.VISIBLE
             tvResult.visibility = View.VISIBLE
             btnRestart.visibility = View.VISIBLE
-
         }
     }
 }
